@@ -18,7 +18,11 @@ jobs:
         with:
           arg: check
           
-      - name: check current directory
+      - name: check previous status
+        if: ${{ success() }}
+        run: echo check successful
+                 
+      - name: check current directory and processes
         run: |
           echo Current Working Directory
           pwd
@@ -30,5 +34,8 @@ jobs:
           arg: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          
-          
+      
+      - name: report completion
+        if: ${{ always() }}
+        run: echo End of scripts
+        
