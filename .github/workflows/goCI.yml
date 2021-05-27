@@ -40,6 +40,8 @@ jobs:
     - name: check files
       run: |
          ls
+         pwd
          cd remoteRepo
          ls
+         cat myText.txt
          cd ..
