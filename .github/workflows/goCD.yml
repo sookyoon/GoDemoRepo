@@ -1,4 +1,4 @@
-name: Test Release 
+name: Trigger on Release 
 
 on:
   create:
@@ -10,6 +10,13 @@ jobs:
     name: releasing latest tag to ubuntu 
     runs-on: ubuntu-latest
     steps:
+      - name: check some system info
+        run: |
+          echo Current Working Directory, processes, disk free
+          pwd
+          ps -ef
+          df -h
+          
       - name: check out codes
         uses: actions/checkout@v2
       
@@ -18,23 +25,29 @@ jobs:
         with:
           arg: check
           
-      - name: check previous status
+      - name: check status
         if: ${{ success() }}
         run: echo check successful
-                 
-      - name: check current directory and processes
-        run: |
-          echo Current Working Directory
-          pwd
-          ps -ef
+        
+      - name: check status
+        if: ${{ failure() }}
+        run: echo check failed
           
-      - name: Release on GitHub
+      - name: release codes
         uses: docker://goreleaser/goreleaser:latest
         with:
           arg: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
+  
+      - name: check status
+        if: ${{ success() }}
+        run: echo release successful
+        
+      - name: check status
+        if: ${{ failure() }}
+        run: echo release failed
+          
       - name: report completion
         if: ${{ always() }}
         run: echo End of scripts
