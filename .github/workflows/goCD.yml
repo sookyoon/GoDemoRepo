@@ -7,10 +7,10 @@ on:
 
 jobs:
   release:
-    name: Release on GitHub
+    name: releasing latest tag to ubuntu 
     runs-on: ubuntu-latest
     steps:
-      - name: Check out codes
+      - name: check out codes
         uses: actions/checkout@v2
       
       - name: Validate Go releaser configuration
