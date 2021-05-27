@@ -1,8 +1,13 @@
 name: trigger Telegram when on create
 on: [create, delete]
 jobs:
-
-  name: setup
-  run: echo "setting up"
+  job1:
+    name: Job 1 setup
+    runs-on: ubuntu-16.04
+    steps: 
+    - name: step 1
+      run: |
+       echo Step 1
+       
   
   
