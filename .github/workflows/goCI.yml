@@ -26,5 +26,7 @@ jobs:
     - name: checkout new codes
       uses: actions/checkout@v2
     - name: list files
-      run: ls
+      run: |
          ls
+         cat calc.go
+         
