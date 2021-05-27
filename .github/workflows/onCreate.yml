@@ -1,0 +1,8 @@
+name: trigger Telegram when on create
+on: [create, delete]
+jobs:
+
+  name: setup
+  run: echo "setting up"
+  
+  
