@@ -18,6 +18,12 @@ jobs:
         with:
           arg: check
           
+      - name: check current directory
+        run: |
+          echo Current Working Directory
+          pwd
+          ps -ef
+          
       - name: Release on GitHub
         uses: docker://goreleaser/goreleaser:latest
         with:
