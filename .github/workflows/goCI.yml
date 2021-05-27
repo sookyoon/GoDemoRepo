@@ -23,3 +23,8 @@ jobs:
       run: |
            go version
            ls
+    - name: checkout new codes
+      uses: action/checkout@v2
+    - name: list files
+      run: ls
+         ls
