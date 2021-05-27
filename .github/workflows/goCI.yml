@@ -1,4 +1,4 @@
-name: CI setp for go
+name: CI step for go
 
 on: 
    push:
