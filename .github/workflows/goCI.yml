@@ -3,7 +3,8 @@ name: CI step for go
 on: 
    push:
      branches: [main, master]
-     
+   pull_request:
+     branches: [main]
      
 jobs:
   my-job: 
